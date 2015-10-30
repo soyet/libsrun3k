@@ -17,13 +17,10 @@ namespace libsrun3k
 		private int pop;
 		private int type;
 		private int n;
-		private string ip;
 		private int mbytes;
 		private int minutes;
 		private int ac_id;
 		private string mac;
-		private string cguid;
-		private string key;
 
 		// constructor
 		public CampusAuth()
@@ -33,16 +30,13 @@ namespace libsrun3k
 			Username = "";
 			Password = "";
 			Drop = 0;
-			Pop = 1;
+			Pop = 0;
 			Type = 2;
 			N = 117;
-			IP = "";
 			Mbytes = 0;
 			Minutes = 0;
-			Ac_id = 6;
+			Ac_id = 7;
 			MAC = "";
-			Cguid = "";
-			Key = "";
 		}
 
 		// setter
@@ -57,13 +51,10 @@ namespace libsrun3k
 		public int Pop { set { pop = value; } }
 		public int Type { set { type = value; } }
 		public int N { set { n = value; } }
-		public string IP { set { ip = value; } }
 		public int Mbytes { set { mbytes = value; } }
 		public int Minutes { set { minutes = value; } }
 		public int Ac_id { set { ac_id = value; } }
 		public string MAC { set { mac = value; } }
-		private string Cguid { set { cguid = value; } }
-		private string Key { set { key = value; } }
 
 		//
 		private string GetLoginParam()
@@ -75,13 +66,10 @@ namespace libsrun3k
 				"pop=" + HttpUtility.UrlEncode(pop.ToString()) + "&" +
 				"type=" + HttpUtility.UrlEncode(type.ToString()) + "&" +
 				"n=" + HttpUtility.UrlEncode(n.ToString()) + "&" +
-				"ip=" + HttpUtility.UrlEncode(ip) + "&" +
 				"mbytes=" + HttpUtility.UrlEncode(mbytes.ToString()) + "&" +
 				"minutes=" + HttpUtility.UrlEncode(minutes.ToString()) + "&" +
 				"ac_id=" + HttpUtility.UrlEncode(ac_id.ToString()) + "&" +
-				"mac=" + HttpUtility.UrlEncode(mac) + "&" +
-				"cguid=" + HttpUtility.UrlEncode(cguid) + "&" +
-				"key=" + key;
+				"mac=" + HttpUtility.UrlEncode(mac);
 			return lip;
 		}
 
@@ -128,7 +116,7 @@ namespace libsrun3k
 			string bmp = HttpUtility.UrlEncode("user_login_name=201416010000");
 			Uri bm_uri = new UriBuilder("http", "172.16.154.130", 80, "get_msg.php").Uri;
 
-			return HttpUtility.HtmlDecode(http_action.post(bm_uri, bmp, "gb2312"));
+			return HttpUtility.HtmlDecode(http_action.post(bm_uri, bmp, "gbk"));
 		}
 
 		public static string ReadUserInfo()
@@ -141,12 +129,18 @@ namespace libsrun3k
 
 class http_action
 {
-	public static string post(Uri url, string po_param)
+	public static string get(Uri url, string encoding = "utf-8")
 	{
-		return post(url, po_param, "utf-8");
+		HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+		request.Method = "GET";
+		request.ContentType = "application/x-www-form-urlencoded";
+
+		/* TODO */
+
+		return "";
 	}
 
-	public static string post(Uri url, string po_param, string encoding)
+	public static string post(Uri url, string po_param, string encoding = "utf-8")
 	{
 		HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 		request.Method = "POST";

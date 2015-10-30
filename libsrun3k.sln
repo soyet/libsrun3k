@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libsrun3k", "libsrun3k\libsrun3k.csproj", "{8F3F89C8-2C0B-4344-98D3-EE692074DF1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PswdEncryptUnitTest", "PswdEncryptUnitTest\PswdEncryptUnitTest.csproj", "{7D7B1C00-5CEE-4151-AA89-AC2EAB565E94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{7D7B1C00-5CEE-4151-AA89-AC2EAB565E94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

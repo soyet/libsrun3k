@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace PswdEncryptUnitTest
 {
 	[TestClass]
-	public class PswdUnitTest
+	public class UnitTest
 	{
 		[TestMethod]
 		public void PswdEncryptTest()
